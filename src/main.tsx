@@ -15,14 +15,14 @@ function revealElements() {
   });
 }
 
-// jalan saat halaman pertama kali load
+{/* jalan saat halaman pertama kali load */}
 window.addEventListener("load", revealElements);
 window.addEventListener("DOMContentLoaded", revealElements);
 
-// jalan saat scroll
+{/* jalan saat scroll */}
 document.addEventListener("scroll", revealElements);
 
-// jalan saat klik <a> (link di navbar & footer)
+{/* jalan saat klik <a> (link di navbar & footer) */}
 document.addEventListener("click", (e) => {
   const target = e.target as HTMLElement;
   if (target.tagName === "A" || target.closest("a")) {
@@ -30,7 +30,7 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// 🔴 TAMBAHAN: jalan setiap kali kita dispatch event manual dari tombol React
+{/* jalan setiap kali kita dispatch event manual dari tombol React */}
 document.addEventListener("app:navigate", () => {
   setTimeout(() => {
     const reveals = document.querySelectorAll(".reveal");
