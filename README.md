@@ -41,7 +41,7 @@ SpeakWell adalah website company profile yang menyediakan informasi program pemb
 ## API yang Digunakan
 Halaman Teams menggunakan RandomUser API untuk generate data mentor:
 
-https://randomuser.me
+https://randomuser.me/api/?results=6
 
 ---
 
