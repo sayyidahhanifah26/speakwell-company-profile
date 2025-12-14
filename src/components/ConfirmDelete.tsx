@@ -3,7 +3,7 @@ interface ConfirmDeleteProps {
   onCancel: () => void;
 }
 
-export default function ConfirmDelete({ onConfirm, onCancel }: ConfirmDeleteProps) {
+const ConfirmDelete = ({ onConfirm, onCancel }: ConfirmDeleteProps) => {
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <div className="bg-white p-8 rounded-2xl shadow-xl max-w-sm w-full text-center">
@@ -29,4 +29,6 @@ export default function ConfirmDelete({ onConfirm, onCancel }: ConfirmDeleteProp
       </div>
     </div>
   );
-}
+};
+
+export default ConfirmDelete;

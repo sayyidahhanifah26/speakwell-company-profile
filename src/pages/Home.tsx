@@ -19,7 +19,7 @@ export default function Home() {
     <div className="pt-24">
 
       {/* HERO SECTION */}
-      <section className="reveal bg-linear-to-b from-blue-900 to-blue-600 text-white text-center px-6 py-28">
+      <section className="bg-linear-to-b from-blue-900 to-blue-600 text-white text-center px-6 py-28">
         <h1 className="text-5xl font-extrabold mb-6 leading-tight">
           Speak well, <span className="text-blue-300">connect with the world.</span>
         </h1>
@@ -40,7 +40,7 @@ export default function Home() {
       </section>
 
       {/* ABOUT SECTION */}
-      <section className="reveal px-6 py-20 max-w-6xl mx-auto text-center">
+      <section className="px-6 py-20 max-w-6xl mx-auto text-center">
         <h2 className="text-4xl font-bold text-blue-700 mb-6">Tentang SpeakWell</h2>
         <p className="text-gray-600 text-lg leading-relaxed max-w-3xl mx-auto">
           SpeakWell membantu pelajar membangun kepercayaan diri dalam komunikasi bahasa Inggris melalui metode praktik langsung bersama mentor profesional.
@@ -48,7 +48,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES SECTION */}
-      <section className="reveal px-6 py-20 bg-gray-50">
+      <section className="px-6 py-20 bg-gray-50">
         <h2 className="text-4xl font-bold text-blue-700 mb-12 text-center">Program Pembelajaran</h2>
 
         <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
@@ -83,7 +83,7 @@ export default function Home() {
       </section>
 
       {/* TESTIMONIAL SECTION */}
-      <section className="reveal px-6 py-20 max-w-5xl mx-auto text-center">
+      <section className="px-6 py-20 max-w-5xl mx-auto text-center">
         <h2 className="text-4xl font-bold text-blue-700 mb-12">Apa Kata Mereka?</h2>
 
         <div className="grid md:grid-cols-3 gap-8">

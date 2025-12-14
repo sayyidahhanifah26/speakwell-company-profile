@@ -1,9 +1,9 @@
-export default function About() {
+const About = () => {
   return (
     <div className="pt-24">
 
       {/* COMPANY HISTORY */}
-      <section className="reveal px-6 py-24 max-w-5xl mx-auto text-center">
+      <section className="px-6 py-24 max-w-5xl mx-auto text-center">
         <h2 className="text-4xl font-extrabold text-blue-700 mb-6">Sejarah SpeakWell</h2>
         <p className="text-gray-600 text-lg leading-relaxed mb-6">
           SpeakWell berdiri pada tahun 2018 dengan misi untuk membantu masyarakat Indonesia
@@ -20,7 +20,7 @@ export default function About() {
       </section>
 
       {/* TEAM INTRO */}
-      <section className="reveal px-6 py-24 bg-gray-50">
+      <section className="px-6 py-24 bg-gray-50">
         <h2 className="text-4xl font-extrabold text-blue-700 mb-12 text-center">
           Tim Pengembang di Balik SpeakWell
         </h2>
@@ -56,7 +56,7 @@ export default function About() {
       </section>
 
       {/* CULTURE VALUES */}
-      <section className="reveal px-6 py-24 max-w-5xl mx-auto text-center">
+      <section className="px-6 py-24 max-w-5xl mx-auto text-center">
         <h2 className="text-4xl font-extrabold text-blue-700 mb-10">Budaya & Nilai Perusahaan</h2>
 
         <ul className="space-y-6 text-gray-600 text-lg leading-relaxed max-w-3xl mx-auto">
@@ -70,3 +70,5 @@ export default function About() {
     </div>
   );
 }
+
+export default About;

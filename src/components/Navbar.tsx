@@ -1,38 +1,40 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
 
-export default function Navbar() {
-  const { isLoggedIn, logout } = useAuthStore();
+const Navbar = () => {
+  const { isAuthenticated, logout } = useAuthStore();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const navigate = useNavigate();
 
-  function handleLogout() {
-    logout();
+  const handleLogout = async () => {
+    await logout(); 
     setMobileOpen(false);
-    window.location.href = "/";
-  }
+    navigate("/");
+  };
+  
+  const closeMobileMenu = () => setMobileOpen(false);
 
   return (
     <nav className="w-full bg-blue-700 text-white px-6 py-4 shadow-md fixed top-0 left-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <h1 className="text-2xl font-bold tracking-wide">SpeakWell</h1>
-
-        {/* Desktop */}
         <div className="hidden lg:flex gap-8 text-lg font-medium items-center">
           <Link to="/" className="hover:text-blue-300 transition-colors duration-200">Home</Link>
           <Link to="/about" className="hover:text-blue-300 transition-colors duration-200">About</Link>
           <Link to="/services" className="hover:text-blue-300 transition-colors duration-200">Services</Link>
           <Link to="/teams" className="hover:text-blue-300 transition-colors duration-200">Teams</Link>
-          <Link to="/blog" className="hover:text-blue-300 transition-colors duration-200">Blog</Link>
-          <Link to="/create-blog" className="hover:text-blue-300 transition-colors duration-200">Create Blog</Link>
-
-          {!isLoggedIn && (
+          <Link to="/blog-list" className="hover:text-blue-300 transition-colors duration-200">Blog</Link>
+          
+          {isAuthenticated && (
+            <Link to="/create-blog" className="hover:text-blue-300 transition-colors duration-200">Create Blog</Link>
+          )}
+          {!isAuthenticated && (
             <Link to="/login" className="hover:text-blue-300 transition-colors duration-200">
               Login
             </Link>
           )}
-
-          {isLoggedIn && (
+          {isAuthenticated && (
             <button
               onClick={handleLogout}
               className="hover:text-blue-300 transition-colors duration-200 cursor-pointer"
@@ -51,63 +53,38 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile */}
+      {/* Mobile Menu */}
       {mobileOpen && (
         <div className="lg:hidden flex flex-col gap-6 text-lg font-medium mt-4 pb-6">
-          <Link
-            to="/"
-            onClick={() => setMobileOpen(false)}
-            className="hover:text-blue-300 cursor-pointer transition-colors duration-200"
-          >
-            Home
-          </Link>
-          <Link
-            to="/about"
-            onClick={() => setMobileOpen(false)}
-            className="hover:text-blue-300 cursor-pointer transition-colors duration-200"
-          >
-            About
-          </Link>
-          <Link
-            to="/services"
-            onClick={() => setMobileOpen(false)}
-            className="hover:text-blue-300 cursor-pointer transition-colors duration-200"
-          >
-            Services
-          </Link>
-          <Link
-            to="/teams"
-            onClick={() => setMobileOpen(false)}
-            className="hover:text-blue-300 cursor-pointer transition-colors duration-200"
-          >
-            Teams
-          </Link>
-          <Link
-            to="/blog"
-            onClick={() => setMobileOpen(false)}
-            className="hover:text-blue-300 cursor-pointer transition-colors duration-200"
-          >
-            Blog
-          </Link>
-          <Link
-            to="/create-blog"
-            onClick={() => setMobileOpen(false)}
-            className="hover:text-blue-300 cursor-pointer transition-colors duration-200"
-          >
-            Create Blog
-          </Link>
+          <Link to="/" onClick={closeMobileMenu} className="hover:text-blue-300 cursor-pointer transition-colors duration-200">Home</Link>
+          <Link to="/about" onClick={closeMobileMenu} className="hover:text-blue-300 cursor-pointer transition-colors duration-200">About</Link>
+          <Link to="/services" onClick={closeMobileMenu} className="hover:text-blue-300 cursor-pointer transition-colors duration-200">Services</Link>
+          <Link to="/teams" onClick={closeMobileMenu} className="hover:text-blue-300 cursor-pointer transition-colors duration-200">Teams</Link>
+          <Link to="/blog-list" onClick={closeMobileMenu} className="hover:text-blue-300 cursor-pointer transition-colors duration-200">Blog</Link>
+          
+          {/* 🚨 PERBAIKAN: Tampilkan 'Create Blog' di MOBILE hanya jika sudah login 🚨 */}
+          {isAuthenticated && (
+            <Link
+              to="/create-blog"
+              onClick={closeMobileMenu}
+              className="hover:text-blue-300 cursor-pointer transition-colors duration-200"
+            >
+              Create Blog
+            </Link>
+          )}
 
-          {!isLoggedIn && (
+          {/* Tombol Login/Logout Mobile */}
+          {!isAuthenticated && (
             <Link
               to="/login"
-              onClick={() => setMobileOpen(false)}
+              onClick={closeMobileMenu}
               className="hover:text-blue-300 cursor-pointer transition-colors duration-200"
             >
               Login
             </Link>
           )}
 
-          {isLoggedIn && (
+          {isAuthenticated && (
             <button
               onClick={handleLogout}
               className="hover:text-blue-300 cursor-pointer transition-colors duration-200 text-left"
@@ -119,4 +96,6 @@ export default function Navbar() {
       )}
     </nav>
   );
-}
+};
+
+export default Navbar;

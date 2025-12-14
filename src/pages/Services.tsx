@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { useAuthStore } from "../store/useAuthStore";
+import { useAuthStore } from "../store/useAuthStore"; 
 
-export default function Services() {
+const Services = () => {
   const navigate = useNavigate();
-  const { isLoggedIn } = useAuthStore();
+  const { isAuthenticated } = useAuthStore(); 
 
   const services = [
     {
@@ -33,16 +33,15 @@ export default function Services() {
   ];
 
   function handleEnroll() {
-    if (isLoggedIn) {
-      navigate("/create-blog");
+    if (isAuthenticated) {
+      navigate("/create-blog"); 
     } else {
       navigate("/login");
     }
-    document.dispatchEvent(new Event("app:navigate"));
   }
 
   return (
-    <section className="reveal min-h-screen bg-gray-50 pt-28 px-6 md:px-16">
+    <section className="min-h-screen bg-gray-50 pt-28 px-6 md:px-16">
       <h2 className="text-center text-4xl font-extrabold text-blue-700 mb-14">
         Program Pembelajaran SpeakWell
       </h2>
@@ -53,21 +52,21 @@ export default function Services() {
             key={index}
             className="bg-white border border-blue-100 shadow-lg rounded-2xl p-8 flex flex-col justify-between text-center transition duration-300 hover:shadow-2xl hover:scale-105"
           >
-            <h3 className="text-2xl font-bold text-blue-700 mb-4">
-              {item.title}
-            </h3>
+             <h3 className="text-2xl font-bold text-blue-700 mb-4">
+               {item.title}
+             </h3>
 
-            <p className="text-gray-600 leading-relaxed mb-6">
-              {item.description}
-            </p>
+             <p className="text-gray-600 leading-relaxed mb-6">
+               {item.description}
+             </p>
 
-            <div className="bg-blue-50 text-blue-700 font-semibold rounded-xl py-2 px-4 mb-6 border border-blue-200 shadow-sm">
-              {item.price}
-            </div>
+             <div className="bg-blue-50 text-blue-700 font-semibold rounded-xl py-2 px-4 mb-6 border border-blue-200 shadow-sm">
+               {item.price}
+             </div>
 
-            <p className="italic text-gray-700 border-t pt-4 text-sm mb-6">
-              {item.testimonial}
-            </p>
+             <p className="italic text-gray-700 border-t pt-4 text-sm mb-6">
+               {item.testimonial}
+             </p>
 
             <button
               onClick={handleEnroll}
@@ -80,4 +79,6 @@ export default function Services() {
       </div>
     </section>
   );
-}
+};
+
+export default Services;
