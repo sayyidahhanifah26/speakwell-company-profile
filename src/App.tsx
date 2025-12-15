@@ -1,14 +1,10 @@
-// src/App.tsx
-
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./utils/ScrollToTop";
 import { Routes, Route } from "react-router-dom"; 
 
-// Import Components
-import ProtectedRoute from "./components/ProtectedRoute"; // 🚨 DITAMBAHKAN
+import ProtectedRoute from "./components/ProtectedRoute";
 
-// Import Pages
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -26,7 +22,6 @@ export default function App() {
             
             <main className="grow"> 
                 <Routes>
-                    {/* Rute Publik */}
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/services" element={<Services />} />
@@ -35,9 +30,7 @@ export default function App() {
                     <Route path="/blog/:id" element={<BlogDetail />} />
                     <Route path="/login" element={<Login />} />
                     
-                    {/* 🚨 PENGAMANAN RUTE: Menggunakan ProtectedRoute sebagai rute Induk */}
                     <Route element={<ProtectedRoute />}>
-                        {/* Rute Anak yang dilindungi: dirender di dalam <Outlet /> dari ProtectedRoute */}
                         <Route path="/create-blog" element={<CreateBlog />} />
                     </Route>
                     

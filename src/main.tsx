@@ -1,13 +1,9 @@
-// src/main.tsx
-
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom"; // Provider Routing
-import { Toaster } from "sonner";                 // Provider Toasting
+import { BrowserRouter } from "react-router-dom";
+import { Toaster } from "sonner";
 import App from "./App";
 import "./index.css";
-
-// KODE HANYA BOOTSTRAPPING
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

@@ -8,7 +8,6 @@ const Teams: React.FC = () => {
     if (teams.length === 0) {
         fetchTeams(9);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isLoading) {
